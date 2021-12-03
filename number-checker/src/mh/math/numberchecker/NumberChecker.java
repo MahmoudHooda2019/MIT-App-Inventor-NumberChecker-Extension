@@ -14,13 +14,17 @@ public class NumberChecker extends AndroidNonvisibleComponent {
 
   @SimpleFunction(description = "Check Number Is Prime Or Not")
   public boolean CheckNumberIsPrime(int number) {
-    boolean flagP = false;
+    boolean flagP = true;
 
-    for (int i = 2 ; i <= number / 2; ++i){
-      if (number % i == 0) {
-        flagP = true;
-        break;
-      }
+    if (number % 2 == 0 && number != 2 || number < 2) {
+        flagP = false;
+    } else {
+        for (int i = 3 ; i <= number / 2; i = i + 2) {
+            if (number % i == 0) {
+                flagP = false;
+                break;
+            }
+        }
     }
     return flagP;
   }
